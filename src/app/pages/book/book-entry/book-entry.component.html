@@ -1,0 +1,46 @@
+<h1 class="text-lg">Book Entry({{onEdit? 'Edit':'New'}})</h1>
+<hr class="my-2 w-[5%] mb-5 border-b border-borderBottomColor" />
+
+<form class="text-sm tablet:w-[unset] w-[45vw]" (submit)="onSubmit()" [formGroup]="form">
+    <div class="relative flex justify-center">
+        <!-- <mat-form-field class="w-full" appearance="outline">
+            <mat-label>File</mat-label> -->
+        <label class="custom-file-upload">
+      <input type="file" (change)="onChange($event)" />
+      <mat-icon>camera</mat-icon>
+      <p class="my-2 opacity-40" >Max_File_Size: 15mb</p>
+    </label>
+        <div class="rounded-full h-[250px] w-[250px] border border-borderBottomColor">
+            <!-- Avatar image -->
+            <img class="w-full h-full rounded-full" [src]="imageSrc || 'https://via.placeholder.com/150'" alt="" />
+        </div>
+
+        <!-- </mat-form-field> -->
+    </div>
+    <div class="flex flex-wrap justify-between mt-10">
+        <div class="w-[47%] tablet:w-[100%] my-2 ">
+            <mat-form-field class="w-full" appearance="outline">
+                <mat-label>Category</mat-label>
+                <mat-select required matSelect formControlName="categoryId" (selectionChange)="onCategoryChange($event.value)">
+                    <mat-option *ngFor="let category of categories" [value]="category.id">
+                        {{ category.name }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="w-[47%] tablet:w-[100%] my-2">
+            <mat-form-field class="w-full" appearance="outline">
+                <mat-label>Title</mat-label>
+                <input required type="text" matInput formControlName="title" placeholder="name" />
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="my-2">
+        <mat-form-field class="w-full" appearance="outline">
+            <mat-label>Description</mat-label>
+            <textarea rows="6" matInput placeholder="Describe.." formControlName="description">
+      </textarea>
+        </mat-form-field>
+    </div>
+    <button [disabled]="form.disabled" class="flex justify-center mx-auto items-center px-10 py-3 text-white text-sm tracking-wide font-semibold bg-background p-1 rounded-sm" type="submit">{{!onEdit?'SUBMIT':'SAVE CHANGES'}}</button>
+</form>

@@ -1,0 +1,12 @@
+.custom-file-upload {
+    display: inline-block;
+    cursor: pointer;
+    position: absolute;
+    bottom: -30px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+input[type="file"] {
+    display: none;
+}

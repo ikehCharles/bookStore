@@ -1,0 +1,23 @@
+<h1 class="text-lg">Category Entry({{onEdit? 'Edit':'New'}})</h1>
+<hr class="my-2 w-[5%] mb-4 border-b border-borderBottomColor" />
+
+<form class="text-sm tablet:w-[unset] w-[45vw]" (submit)="onSubmit()" [formGroup]="form">
+
+    <div class="flex flex-wrap justify-between mt-2">
+
+        <div class="w-[47%] tablet:w-[100%] my-2">
+            <mat-form-field class="w-full" appearance="outline">
+                <mat-label>Name</mat-label>
+                <input required type="text" matInput formControlName="name" placeholder="name" />
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="my-2">
+        <mat-form-field class="w-full" appearance="outline">
+            <mat-label>Description</mat-label>
+            <textarea rows="6" matInput placeholder="Describe.." formControlName="description">
+      </textarea>
+        </mat-form-field>
+    </div>
+    <button [disabled]="form.disabled" class="flex justify-center mx-auto items-center px-10 py-3 text-white text-sm tracking-wide font-semibold bg-background p-1 rounded-sm" type="submit">{{!onEdit?'SUBMIT':'SAVE CHANGES'}}</button>
+</form>

@@ -1,0 +1,48 @@
+<div>
+    <div class="flex justify-between items-center bg-bg_outline  shadow-[0_4px_2px_-2px_rgba(0,0,0,0.1)] p-1 px-3 ">
+        <mat-form-field class="tablet:w-[70%] w-[25%] text-xs" appearance="outline">
+            <mat-label>Filter</mat-label>
+            <mat-select required matSelect [(value)]="selected" (selectionChange)="onFilterChange($event.value)">
+
+                <mat-option *ngFor="let filter of filters" [value]="filter.value">
+                    {{ filter.name }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button class="bg-background p-1 rounded-xl flex justify-center items-center p-2" (click)="add()">
+            <mat-icon class="text-white">add</mat-icon>
+        </button>
+    </div>
+    <div class="flex flex-wrap justify-center h-[80vh] px-4 py-7 items-center gap-[3em] overflow-auto">
+        <div class="w-[300px]" *ngFor="let book of books">
+            <p class="hover-scale w-[300px] h-[300px] p-2 rounded-sm bg-bg_outline">
+                <img [src]="book.imageUrl" style="width: 100%; height: 100%; object-fit: cover;" width="100%" height="100%" [alt]="book.title?book.title:book.name">
+            </p>
+            <div class="m-2">
+                <div class="my-2 flex justify-between">
+                    <h3>
+                        {{book.title}}
+                    </h3>
+                    <mat-icon (click)="addToFavorite(book)">{{book.favorite?'favorite':'favorite_border'}}</mat-icon>
+                </div>
+                <p class="truncate w-[90%] opacity-60">
+                    {{book.description}}
+                </p>
+                <p class="my-2 flex justify-between text-white">
+                    <button (click)="edit(book)" class="rounded-lg px-4 py-2 w-[90px] bg-edit font-bold flex gap-[5px] items-center justify-center">
+                        <mat-icon class="text-white text-sm mt-1">edit</mat-icon>
+                        <span>
+                            Edit
+                        </span>
+                    </button>
+                    <button (click)="delete(book)" class="rounded-lg px-4 py-2 w-[90px] bg-delete font-bold flex gap-[5px] items-center justify-center">
+                        <mat-icon class="text-white text-sm mt-1">delete</mat-icon>
+                        <span>
+                            Delete
+                        </span>
+                    </button>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

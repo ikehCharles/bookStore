@@ -1,0 +1,10 @@
+<div class="flex justify-around pt-10 pb-5 border-b border-borderBottomColor">
+    <h2 class="w-[40%]">Tasks</h2>
+    <div class="w-[40%] ">
+        <ul class="flex justify-around">
+            <li *ngFor="let menu of menus">
+                <a style="cursor: pointer;" [ngClass]="menu.active?'text-active': '' " (click)="navigate(menu)">{{menu.title}}</a>
+            </li>
+        </ul>
+    </div>
+</div>

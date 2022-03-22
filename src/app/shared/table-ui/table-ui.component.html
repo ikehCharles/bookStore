@@ -1,0 +1,45 @@
+<table #table id="grid" *ngIf="data.length" mat-table [dataSource]="data" class="w-full border-separate L-tableUI__table" matSort matSortActive="created" matSortDisableClear matSortDirection="desc">
+    <ng-container *ngFor="let column of initColumns" [matColumnDef]="column.value">
+        <!-- kindly check styles for checkbox styling -->
+        <ng-container *ngIf="column.type == 'checkbox'">
+            <th class=" text-lg uppercase" mat-header-cell *matHeaderCellDef>
+                <mat-checkbox (change)="onCheckAll($event)" [checked]="masterCheckboxChecked"></mat-checkbox>
+            </th>
+            <td mat-cell class=" pr-2" *matCellDef="let item">
+                <mat-checkbox class="pr-3" (change)="onCheck($event, item)" [checked]="item.checked || false"></mat-checkbox>
+            </td>
+        </ng-container>
+        <!-- if text -->
+        <ng-container *ngIf="column.type != 'more' && column.type != 'checkbox'">
+            <th class=" text-secondary-green-60" mat-sort-header disableClear mat-header-cell *matHeaderCellDef>
+                <span>
+    {{ column.name }}
+  </span>
+            </th>
+            <td mat-cell class="text-black-70  pr-2" *matCellDef="let item">
+                <span class="pr-2">
+    {{ item[column.value] }}
+  </span>
+            </td>
+        </ng-container>
+
+        <!-- if more (...) -->
+
+        <ng-container *ngIf="column.type == 'more'">
+            <th class=" uppercase pr-2" mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell class="text-black-70  pr-2" *matCellDef="let item">
+                <mat-icon *ngIf="more && more.length" class="cursor-pointer" [matMenuTriggerFor]="moreMenu">more_horiz</mat-icon>
+                <mat-menu #moreMenu="matMenu" class=" cursor-pointer">
+                    <div class="flex flex-col pr-2 pt-2  text-black-70 text-sm">
+                        <button class="py-2" (click)="clickMore(option, item)" *ngFor="let option of more">
+        {{ option.name }}
+      </button>
+                    </div>
+                </mat-menu>
+            </td>
+        </ng-container>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

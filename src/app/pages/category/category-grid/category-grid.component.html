@@ -1,0 +1,13 @@
+<div>
+    <div class="flex justify-end items-center bg-bg_outline shadow-[0_4px_2px_-2px_rgba(0,0,0,0.1)] p-2 px-3">
+        <button class="flex justify-center items-center p-2 mx-6 bg-delete rounded-xl" (click)="delete()">
+      <mat-icon  class="text-white">delete</mat-icon>
+    </button>
+        <button class="flex justify-center items-center p-2 mx-6 bg-background rounded-xl" (click)="add()">
+      <mat-icon class="text-white ">add</mat-icon>
+    </button>
+    </div>
+    <div>
+        <app-table-ui [initColumns]="initColumn" [more]="more" [data]="categories" (onCheckboxCheck)="onCheckboxCheck($event)" (onClickMore)="onClickMore($event)"></app-table-ui>
+    </div>
+</div>

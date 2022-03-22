@@ -1,14 +1,26 @@
 # Bookstore
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.11.
+This project is a sample book store using CRUD operations
 
-## Development server
+## Mock API
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- BASE URL - https://61167dbc1c592d0017bb7f4c.mockapi.io/
+- IMAGE UPLOAD URL - https://api.imgbb.com/1/upload/
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Modules
+
+- Books
+- Categories
+
+## Package External Dependencies
+
+- Angular Material
+- Tailwind CSS
+
+## Start 
+
+Run `ng serve` 
 
 ## Build
 
